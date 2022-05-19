@@ -10,19 +10,21 @@ const App = () => {
   const [movies, setMovies] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
 
-  //const API_URL = `https://www.omdbapi.com?apikey=a4302a45`
   const API_URL = `https://www.omdbapi.com?apikey=${process.env.REACT_APP_TOKEN}`
-  
+  //const API_URL = `https://www.omdbapi.com/?t`
 
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`)
+    //const response = await fetch(`${API_URL}=${title}`)
     const data = await response.json()
     setMovies(data.Search)
+    console.log(data.Search)
   }
   
   useEffect(() => {
     searchMovies("Superman")
   }, [])
+  
 
   return (
     <div className="app">
@@ -42,18 +44,18 @@ const App = () => {
 
       {
           movies?.length > 0 
-            ? ( 
-              <div className="container">
-                {
-                  movies.map((movie) => (
-                    <MovieCard movie_one={movie} />
-                  ))
-                }
-              </div> ) : (
-              <div className="empty">
-                <h2>No movies found</h2>
-              </div>
-            )
+          ? ( 
+            <div className="container">
+              {
+                movies.map((movie) => (
+                  <MovieCard movie_one={movie} />
+                ))
+              }
+            </div> ) : (
+            <div className="empty">
+              <h2>No movies found</h2>
+            </div>
+          )
 
 
       }

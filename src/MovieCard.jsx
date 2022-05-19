@@ -4,7 +4,8 @@ const MovieCard = ({ movie_one: movie }) => {
     return (
         <div className="movie">
             <div>
-              <p>{movie.Year}</p>
+              <p>Released : {movie.Year}</p>
+              <p>Director : {movie.Director ? movie.Director : "Unknown"}</p>
             </div>
             
             <div>
