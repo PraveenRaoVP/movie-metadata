@@ -4,20 +4,15 @@ import './App.css'
 import SearchIcon from './search.svg'
 import MovieCard from "./MovieCard";
 
+
 const App = () => {
 
   const [movies, setMovies] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
 
-  const API_URL = `https://www.omdbapi.com?apikey=a4302a45`
+  //const API_URL = `https://www.omdbapi.com?apikey=a4302a45`
+  const API_URL = `https://www.omdbapi.com?apikey=${process.env.REACT_APP_TOKEN}`
   
-  const movie_one = {
-    "Title": "Superman",
-    "Year": "1978",
-    "imdbID": "tt0078346",
-    "Type": "movie",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMzA0YWMwMTUtMTVhNC00NjRkLWE2ZTgtOWEzNjJhYzNiMTlkXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg"
-  }
 
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`)
